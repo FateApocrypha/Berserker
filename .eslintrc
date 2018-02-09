@@ -1,0 +1,51 @@
+{
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "define": true,
+    "expect": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", {
+      "allowTemplateLiterals": true
+    }],
+    "max-len": [2, 200, 4],
+    "no-use-before-define": 0,
+    "consistent-return": 0,
+    "no-cond-assign": 0,
+    "complexity": ["error", 10],
+    "default-case": ["error"],
+    "eqeqeq": ["error", "always"],
+    "no-eval": ["error"],
+    "no-floating-decimal": "error",
+    "no-proto": "error",
+    "no-with": "error",
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "key-spacing": ["error"],
+    "max-depth": ["error", 4],
+    "max-nested-callbacks": ["error", 4],
+    "no-nested-ternary": "error",
+    "keyword-spacing": ["error"],
+    "no-whitespace-before-property": "error",
+    "object-property-newline": "error",
+    "space-infix-ops": "error",
+    "space-unary-ops": "error",
+    "arrow-spacing": "error"
+  }
+}
