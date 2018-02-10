@@ -10,6 +10,7 @@ Template engines like Vue
 * [x] 4、Generated the expression and filled the value into the express
 * [x] 5、The basic directive system
 * [x] 6、Finished the directive of text
+* [x] 7、Add the directive of show and render the normal attribute
 
 ### Usage
 
@@ -26,7 +27,7 @@ Template engines like Vue
 
 <body>
   <div class="app">
-    <p>
+    <p id="a">
       {{ test }}
     </p>
   </div>

@@ -24,7 +24,6 @@ const globals = [
 export function generate(expression) {
   const dependencies = extractDependencies(expression)
   let dependencyCode = ''
-
   dependencies.map(dependency => (dependencyCode += `var ${dependency} = data["${dependency}"];`))
 
   return new Function('data', `${dependencyCode}return ${expression};`)

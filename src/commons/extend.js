@@ -37,10 +37,7 @@ function isPlainObject(obj) {
   Ctor = hasOwn.call(proto, 'constructor') && proto.constructor
 
   // 在这里判断 Ctor 构造函数是不是 Object 构造函数，用于区分自定义构造函数和 Object 构造函数
-  return (
-    typeof Ctor === 'function' &&
-    hasOwn.toString.call(Ctor) === hasOwn.toString.call(Object)
-  )
+  return typeof Ctor === 'function' && hasOwn.toString.call(Ctor) === hasOwn.toString.call(Object)
 }
 
 export default function extend() {
@@ -60,10 +57,7 @@ export default function extend() {
     i++
   }
   // 如果target不是对象，我们是无法进行复制的，所以设为 {}
-  if (
-    (typeof target !== 'object' && typeof target !== 'function') ||
-    target === null
-  ) {
+  if ((typeof target !== 'object' && typeof target !== 'function') || target === null) {
     target = {}
   }
 
@@ -82,11 +76,7 @@ export default function extend() {
           continue
         }
         // 要递归的对象必须是plainobject 或者数组
-        if (
-          deep &&
-          copy &&
-          (isPlainObject(copy) || (copyIsArray = Array.isArray(copy)))
-        ) {
+        if (deep && copy && (isPlainObject(copy) || (copyIsArray = Array.isArray(copy)))) {
           // 要复制的对象属性值类型与目标属性值相同
           if (copyIsArray) {
             copyIsArray = false
