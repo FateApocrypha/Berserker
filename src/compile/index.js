@@ -41,14 +41,23 @@ Compile.prototype.compile = {}
 Compile.prototype.compile.elementNodes = function(node) {
   let attributes = [].slice.call(node.attributes)
   let attrName = '',
-    attrValue = ''
+    attrValue = '',
+    directiveName = ''
   // 节点上的属性可以分为普通属性，指令属性，普通属性中带有{{}}
   // 通过判断属性名中是不是包含有指令的特殊字符:
   attributes.map(attr => {
     attrName = attr.name
     attrValue = attr.value
     if (attrName.indexOf(configure.identifier.bind) === 0 && attrValue !== '') {
-      //
+      //获取指令的名称
+      directiveName = attrName.slice(1)
+
+      this.bindDirective({
+        node,
+        name: directiveName,
+        expression: attrValue
+      })
+      node.removeAttribute(attrName)
     } else {
       this.bindAttribute(node, attr)
     }

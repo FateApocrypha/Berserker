@@ -33,7 +33,12 @@ configure = {
 */
     `
   },
-  plugins: [babel(), sourcemaps()]
+  plugins: [
+    babel({
+      exclude: 'node_modules/**'
+    }),
+    sourcemaps()
+  ]
 }
 if (process.env.NODE_ENV === 'production') {
   configure.plugins.push(uglify())

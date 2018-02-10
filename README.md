@@ -10,12 +10,12 @@ Template engines like Vue
 * [x] 4、Generated the expression and filled the value into the express
 * [x] 5、The basic directive system
 * [x] 6、Finished the directive of text
-* [x] 7、Add the directive of show and render the normal attribute
+* [x] 7、Add the method of rendering the normal attribute
+* [x] 8、Add the directive of if and show
 
 ### Usage
 
 ```html
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -27,14 +27,16 @@ Template engines like Vue
 
 <body>
   <div class="app">
-    <p id="a">
+    <p :show="flag">
       {{ test }}
     </p>
+    <p :if="1 + 1 === 2">test if</p>
   </div>
 </body>
 <script src="./berserker.js"></script>
 <script>
   const data = {
+    flag: false,
     test: '1111'
   }
   berserker({
