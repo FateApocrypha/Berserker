@@ -1,7 +1,7 @@
 import init from './init/index'
-export default function Berserka(options) {
-  if (!(this instanceof Berserka)) return new Berserka(options)
+export default function Berserker(options) {
+  if (!(this instanceof Berserker)) return new Berserker(options)
 
   this.options = options
-  init(options)
+  init(this)
 }
