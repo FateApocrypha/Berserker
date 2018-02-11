@@ -1,11 +1,18 @@
 import IF from './if'
 import text from './text'
 import show from './show'
+import src from './src'
+import href from './href'
+import style from './style'
+
 import { generate } from '../compile/generate'
 let directives = {
   IF,
   text,
-  show
+  show,
+  src,
+  href,
+  style
 }
 export default class Directive {
   constructor(options = {}) {

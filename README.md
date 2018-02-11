@@ -12,8 +12,9 @@ Template engines like Vue
 * [x] 6、Finished the directive of text
 * [x] 7、Add the method of rendering the normal attribute
 * [x] 8、Add the directive of if and show
-
-### Usage
+* [x] 9、Style directive that supports object writing and array writing
+* [x] 10、add src and href directive
+  ### Usage
 
 ```html
 <html lang="en">
@@ -31,13 +32,25 @@ Template engines like Vue
       {{ test }}
     </p>
     <p :if="1 + 1 === 2">test if</p>
+    <img :src="image" alt="">
+    <a :href="link">链接测试</a>
+    <div :style="{color: activeColor, fontSize: size}">测试一下style指令的对象写法</div>
+    <div :style="[styleObj]">测试一下style数组写法</div>
   </div>
 </body>
 <script src="./berserker.js"></script>
 <script>
   const data = {
+    activeColor: 'red',
+    size: '14px',
+    link: 'https://www.baidu.com',
+    image: 'http://h0.hucdn.com/open/201806/395b7d4f974cd6b9_200x200.jpg',
     flag: false,
-    test: '1111'
+    test: '1111',
+    styleObj: {
+      color: '#ff4965',
+      fontSize: '20px'
+    }
   }
   berserker({
     template: document.querySelector('.app'),
