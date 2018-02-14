@@ -13,7 +13,9 @@ Template engines like Vue
 * [x] 7、Add the method of rendering the normal attribute
 * [x] 8、Add the directive of if and show
 * [x] 9、Style directive that supports object writing and array writing
-* [x] 10、add src and href directive
+* [x] 10、Add src and href directive
+* [x] 11、Class directive that supports object writing and array writing
+* [ ] 12、Finished each directive
   ### Usage
 
 ```html
