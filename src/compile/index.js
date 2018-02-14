@@ -89,3 +89,4 @@ Compile.prototype.bindAttribute = function(node, attribute) {
     attrName: attribute.name
   })
 }
+Compile.prototype.bindPriority = function() {}

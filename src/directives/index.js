@@ -4,10 +4,12 @@ import show from './show'
 import src from './src'
 import href from './href'
 import style from './style'
+import klass from './class'
 
 import { generate } from '../compile/generate'
 let directives = {
   IF,
+  klass,
   text,
   show,
   src,
@@ -17,6 +19,7 @@ let directives = {
 export default class Directive {
   constructor(options = {}) {
     if (options.name === 'if') options.name = 'IF'
+    if (options.name === 'class') options.name = 'klass'
 
     Object.assign(this, options)
     Object.assign(this, directives[this.name])

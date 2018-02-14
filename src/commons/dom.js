@@ -1,6 +1,5 @@
 export function addClass(el, cls) {
-  if (!cls || (cls = cls.trim())) return
-
+  if (!cls || !(cls = cls.trim())) return
   if (el.classList) {
     if (cls.indexOf(' ') > -1) {
       cls.split(/\s+/).forEach(c => el.classList.add(c))
@@ -16,7 +15,7 @@ export function addClass(el, cls) {
 }
 
 export function removeClass(el, cls) {
-  if (!cls || (cls = cls.trim())) return
+  if (!cls || !(cls = cls.trim())) return
 
   if (el.classList) {
     if (cls.indexOf(' ') > -1) {
@@ -28,7 +27,8 @@ export function removeClass(el, cls) {
   } else {
     let cur = ` ${el.getAttribute('class') || ''} `
     const tar = ` ${cls} `
-    whild(cur.indexOf(tar) >= 0){
+
+    while (cur.indexOf(tar) >= 0) {
       cur = cur.replace(tar, ' ')
     }
     cur = cur.trim()
