@@ -27,7 +27,6 @@ export default {
   update(data) {
     if (data && !Array.isArray(data)) return
     const fragment = document.createDocumentFragment()
-
     data.map((item, index) => {
       const ber = berserker({
         template: this.node.cloneNode(true),
@@ -36,6 +35,7 @@ export default {
           [this.indexName]: index
         }
       })
+      console.log(ber)
       fragment.appendChild(ber.options.template)
     })
 

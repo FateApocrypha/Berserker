@@ -15,7 +15,8 @@ Template engines like Vue
 * [x] 9、Style directive that supports object writing and array writing
 * [x] 10、Add src and href directive
 * [x] 11、Class directive that supports object writing and array writing
-* [ ] 12、Finished each directive
+* [x] 12、Finished each directive
+* [x] 13、Bind attributes firective
   ### Usage
 
 ```html
@@ -38,12 +39,18 @@ Template engines like Vue
     <a :href="link">链接测试</a>
     <div :style="{color: activeColor, fontSize: size}">测试一下style指令的对象写法</div>
     <div :style="[styleObj]">测试一下style数组写法</div>
+    <div :class="{success: isActive, error: 1+1==2}"></div>
+    <div :class="[{success: isError}, {error: !isError}]"></div>
+    <li :each="comment in comments">{{ comment.content }}</li>
+    <li :each="comments" data-index="{{ index }}">{{ item.content }}</li>
   </div>
 </body>
 <script src="./berserker.js"></script>
 <script>
   const data = {
     activeColor: 'red',
+    isActive: true,
+    isError: false,
     size: '14px',
     link: 'https://www.baidu.com',
     image: 'http://h0.hucdn.com/open/201806/395b7d4f974cd6b9_200x200.jpg',
@@ -52,7 +59,17 @@ Template engines like Vue
     styleObj: {
       color: '#ff4965',
       fontSize: '20px'
-    }
+    },
+    comments: [{
+        content: '我是1个评论。'
+      },
+      {
+        content: '我是2个评论。'
+      },
+      {
+        content: '我是3个评论。'
+      }
+    ]
   }
   berserker({
     template: document.querySelector('.app'),

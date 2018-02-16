@@ -5,6 +5,8 @@ import src from './src'
 import href from './href'
 import style from './style'
 import klass from './class'
+import each from './each'
+import attribute from './attribute'
 
 import { generate } from '../compile/generate'
 let directives = {
@@ -14,7 +16,9 @@ let directives = {
   show,
   src,
   href,
-  style
+  style,
+  each,
+  attribute
 }
 export default class Directive {
   constructor(options = {}) {

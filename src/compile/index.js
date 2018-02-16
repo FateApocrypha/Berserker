@@ -38,12 +38,14 @@ export default function Compile(template, options = {}) {
 }
 
 Compile.prototype.compile = {}
+
 Compile.prototype.compile.elementNodes = function(node) {
   let attributes = [].slice.call(node.attributes)
   let attrName = '',
     attrValue = '',
     directiveName = ''
   // 节点上的属性可以分为普通属性，指令属性，普通属性中带有{{}}
+  if (node.hasAttributes() && this.bindPriority(node)) return false
   // 通过判断属性名中是不是包含有指令的特殊字符:
   attributes.map(attr => {
     attrName = attr.name
@@ -51,7 +53,6 @@ Compile.prototype.compile.elementNodes = function(node) {
     if (attrName.indexOf(configure.identifier.bind) === 0 && attrValue !== '') {
       //获取指令的名称
       directiveName = attrName.slice(1)
-
       this.bindDirective({
         node,
         name: directiveName,
@@ -89,4 +90,25 @@ Compile.prototype.bindAttribute = function(node, attribute) {
     attrName: attribute.name
   })
 }
-Compile.prototype.bindPriority = function() {}
+Compile.prototype.bindPriority = function(node) {
+  let attrValue, directive
+  for (let i = 0; i < configure.priority.length; ++i) {
+    directive = configure.priority[i]
+    attrValue = node.getAttribute(`${configure.identifier.bind}${directive}`)
+
+    if (attrValue) {
+      attrValue = attrValue.trim()
+      if (!attrValue) return false
+
+      node.removeAttribute(`${configure.identifier.bind}${directive}`)
+      this.bindDirective({
+        node,
+        name: directive,
+        expression: attrValue
+      })
+      return true
+    } else {
+      return false
+    }
+  }
+}
